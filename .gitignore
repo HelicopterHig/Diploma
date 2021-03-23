@@ -4,9 +4,9 @@
 Temp/
 Library/
 
-# ===================================== #
-# Visual Studio / MonoDevelop generated #
-# ===================================== #
+# ============== #
+# Visual Studio  #
+# ============== #
 ExportedObj/
 obj/
 *.svd
