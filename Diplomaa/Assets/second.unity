@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: e42d03c9bbcfaa44c947f1b812227cb5, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -156,6 +156,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb08fba7c4ac4b647aefcd9e2af1372c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seed: 0
+  frequency: 0
+  amplitude: 0
 --- !u!114 &544992364
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -217,16 +220,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  waves:
-  - seed: 5613
-    frequency: 1
-    amplitude: 1
-  - seed: 9551
-    frequency: 0.5
-    amplitude: 2
-  - seed: 6712
-    frequency: 0.25
-    amplitude: 4
+  waves: []
 --- !u!64 &544992365
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -408,6 +402,7 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
+  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -473,13 +468,25 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.115254335, y: -0, z: -0, w: 0.993336}
-  m_LocalPosition: {x: 14.78, y: 5.62, z: -12.6}
+  m_LocalRotation: {x: 0.20545961, y: -0, z: -0, w: 0.97866565}
+  m_LocalPosition: {x: 14.78, y: 9.16, z: -11.77}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 13.237, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 23.713, y: 0, z: 0}
+--- !u!114 &963194229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963194225}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f530f96487a2d2d4a971fb95db9e61ee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1823739109
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,6 +520,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb08fba7c4ac4b647aefcd9e2af1372c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seed: 0
+  frequency: 0
+  amplitude: 0
 --- !u!114 &1823739111
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -574,16 +584,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  waves:
-  - seed: 5613
-    frequency: 1
-    amplitude: 1
-  - seed: 9551
-    frequency: 0.5
-    amplitude: 2
-  - seed: 6712
-    frequency: 0.25
-    amplitude: 4
+  waves: []
 --- !u!64 &1823739112
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -694,6 +695,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb08fba7c4ac4b647aefcd9e2af1372c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seed: 0
+  frequency: 0
+  amplitude: 0
 --- !u!114 &1885093836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -755,16 +759,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  waves:
-  - seed: 5613
-    frequency: 1
-    amplitude: 1
-  - seed: 9551
-    frequency: 0.5
-    amplitude: 2
-  - seed: 6712
-    frequency: 0.25
-    amplitude: 4
+  waves: []
 --- !u!64 &1885093837
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -875,6 +870,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb08fba7c4ac4b647aefcd9e2af1372c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  seed: 0
+  frequency: 0
+  amplitude: 0
 --- !u!114 &2079553024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -936,16 +934,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  waves:
-  - seed: 5613
-    frequency: 1
-    amplitude: 1
-  - seed: 9551
-    frequency: 0.5
-    amplitude: 2
-  - seed: 6712
-    frequency: 0.25
-    amplitude: 4
+  waves: []
 --- !u!64 &2079553025
 MeshCollider:
   m_ObjectHideFlags: 0

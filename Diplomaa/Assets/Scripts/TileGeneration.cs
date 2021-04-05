@@ -39,23 +39,23 @@ public class TileGeneration : MonoBehaviour
 
 	void GenerateTile()
 	{
-		//рассчитать глубину и ширину плитки на основе вершин сетки 
+		// calculate tile depth and width based on the mesh vertices
 		Vector3[] meshVertices = this.meshFilter.mesh.vertices;
 		int tileDepth = (int)Mathf.Sqrt(meshVertices.Length);
 		int tileWidth = tileDepth;
 
-		// рассчитать смещения на основе положения плитки
+		// calculate the offsets based on the tile position
 		float offsetX = -this.gameObject.transform.position.x;
 		float offsetZ = -this.gameObject.transform.position.z;
 
-		// сгенерировать heightMap с использованием шума
+		// generate a heightMap using noise
 		float[,] heightMap = this.noiseMapGeneration.GenerateNoiseMap(tileDepth, tileWidth, this.levelScale, offsetX, offsetZ, waves);
 
-		// построить Texture2D из карты высот
+		// build a Texture2D from the height map
 		Texture2D tileTexture = BuildTexture(heightMap);
 		this.tileRenderer.material.mainTexture = tileTexture;
 
-		//	обновить вершины мозаичной сетки в соответствии с картой высот
+		// update the tile mesh vertices according to the height map
 		UpdateMeshVertices(heightMap);
 	}
 
@@ -69,17 +69,17 @@ public class TileGeneration : MonoBehaviour
 		{
 			for (int xIndex = 0; xIndex < tileWidth; xIndex++)
 			{
-				// преобразовать индекс 2D-карты в индекс массива
+				// transform the 2D map index is an Array index
 				int colorIndex = zIndex * tileWidth + xIndex;
 				float height = heightMap[zIndex, xIndex];
-				// выберите тип местности в соответствии со значением высоты
+				// choose a terrain type according to the height value
 				TerrainType terrainType = ChooseTerrainType(height);
-				//назначить цвет в соответствии с типом местности
+				// assign the color according to the terrain type
 				colorMap[colorIndex] = terrainType.color;
 			}
 		}
 
-		//создать новую текстуру и установить цвета ее пикселей
+		// create a new texture and set its pixel colors
 		Texture2D tileTexture = new Texture2D(tileWidth, tileDepth);
 		tileTexture.wrapMode = TextureWrapMode.Clamp;
 		tileTexture.SetPixels(colorMap);
@@ -90,10 +90,10 @@ public class TileGeneration : MonoBehaviour
 
 	TerrainType ChooseTerrainType(float height)
 	{
-		// для каждого типа местности проверьте, не ниже ли высота, чем высота для данного типа местности
+		// for each terrain type, check if the height is lower than the one for the terrain type
 		foreach (TerrainType terrainType in terrainTypes)
 		{
-			// вернуть первый тип ландшафта, высота которого выше, чем сгенерированный
+			// return the first terrain type whose height is higher than the generated one
 			if (height < terrainType.height)
 			{
 				return terrainType;
@@ -109,7 +109,7 @@ public class TileGeneration : MonoBehaviour
 
 		Vector3[] meshVertices = this.meshFilter.mesh.vertices;
 
-		//перебирать все координаты heightMap, обновляя индекс вершины
+		// iterate through all the heightMap coordinates, updating the vertex index
 		int vertexIndex = 0;
 		for (int zIndex = 0; zIndex < tileDepth; zIndex++)
 		{
@@ -118,18 +118,18 @@ public class TileGeneration : MonoBehaviour
 				float height = heightMap[zIndex, xIndex];
 
 				Vector3 vertex = meshVertices[vertexIndex];
-				//изменить координату Y вершины пропорционально значению высоты. Значение высоты оценивается функцией heightCurve, чтобы исправить его.
+				// change the vertex Y coordinate, proportional to the height value. The height value is evaluated by the heightCurve function, in order to correct it.
 				meshVertices[vertexIndex] = new Vector3(vertex.x, this.heightCurve.Evaluate(height) * this.heightMultiplier, vertex.z);
 
 				vertexIndex++;
 			}
 		}
 
-		// обновить вершины в сетке и обновить ее свойства
+		// update the vertices in the mesh and update its properties
 		this.meshFilter.mesh.vertices = meshVertices;
 		this.meshFilter.mesh.RecalculateBounds();
 		this.meshFilter.mesh.RecalculateNormals();
-		//обновить коллайдер сетки
+		// update the mesh collider
 		this.meshCollider.sharedMesh = this.meshFilter.mesh;
 	}
 }
